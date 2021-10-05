@@ -1,1 +1,1 @@
-A repo for Rust projects.
+## [learnXinYminutes where X is Rust.](https://learnxinyminutes.com/docs/rust/)
