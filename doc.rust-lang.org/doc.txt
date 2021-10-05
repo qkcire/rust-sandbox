@@ -1,5 +1,7 @@
 The Rust Programming Language
 
+1.1 INSTALLATION
+
 1.2 HELLO, WORLD!
  Now that you've installed Rust, let's write your
  first Rust program. It's traditional when learning
@@ -36,7 +38,7 @@ The Rust Programming Language
   mkdir hello_world
   cd hello_world
 
-  WRITING AND RUNNING A RUST PROGRAM
+ WRITING AND RUNNING A RUST PROGRAM
   Next, make a snew source file and call it main.rs. Rust files
   always end with the .rs extension. If you're using more than
   one word in your filename, use an underscore to separate them.
@@ -46,3 +48,131 @@ The Rust Programming Language
   Listing 1-1.
 
   Filename: main.rs
+
+  Save the file and go back to your terminal window. On
+  Linux or macOS, enter the following commands to compile
+  and run the file:
+
+  rustc main.rs
+  ./main
+  Hello, world!
+
+  On windows, enter the command .\main.exe instead of ./main:
+
+  rustc main.rs
+  .\main.exe
+  Hello, world!
+
+  Regardless of your operating system, the string Hello, world!
+  should print to the terminal. If you don't see this output, 
+  refer back to the "Troubleshooting" part of the installation
+  section for ways to get help.
+
+  If Hello, world! did print, congratulations! You've officially
+  written a Rust program. That makes you a Rust programmer - 
+  welcome!
+
+ ANATOMY OF A RUST PROGRAM
+  Let's review in detail what just happened in your "Hello, world!"
+  program. Here's the first piece of the puzzle:
+
+  fn main() {
+
+  }
+
+  These lines define a function in Rust. The main function is
+  special: is is always the first code that runs in every executable
+  Rust program. The first line declares a function named main that
+  has no parameters and returns nothing. If there were parameters,
+  they would go inside the parantheses, ().
+
+  Also, note that the function body is wrapped in curly brackets, {}.
+  Rust requires these around all function bodies. It's good style to
+  place the opening curly bracket on the same line as the function
+  declaration, adding one space in between.
+
+  If you want to stick to a standard style across Rust projects, you
+  can use an automatic formater tool called rustfmt to format your
+  code in a particular style. The Rust team has included this tool with
+  the standard Rust distribution, like rustc, so it should already be
+  installed on your computer! Check the online documentation for more
+  details.
+
+  Inside the main function is the following code:
+
+  println!("Hello, world!);
+
+  This line does all the work in this little program: it prints text
+  to the screen. There are four important details to notice here.
+
+  First, Rust style is to indent with four spaces, not a tab.
+
+  Second, println! calls a Rust macro. If it called a function instead,
+  it would be entered as println (without the !). We'll discuss Rust
+  macros in more dfetail in Chapter 19. For now, you just need to know
+  that using a ! means that you're calling a macro instead of
+  a normal function, and that macros don't always follow the same
+  rules as functions.
+
+  Third, you see the "Hello, world! string. We pass this string as
+  an argument to println!, and the string is printed to the screen.
+
+  Fourth, we end the line with a semicolon(;), which indicates that
+  this expression is over and the next one is ready to begin. Most
+  lines of Rust code end with a semicolon.
+
+ COMPILING AND RUNNING ARE SEPARATE STEPS
+  You've just run a newly created program, so let's examine
+  each step in the process.
+
+  Before running a Rust program, you must compile it using the Rust
+  compilar by entering the rustc command and passing it the
+  name of your source file, like this:
+
+  rustc main.rs
+
+  If you have a C or C++ background, you'll notice that this is similar
+  to gcc or clang. After compiling successfully, Rust outputs
+  binary executable.
+
+  On Linux, macOS, and PowerShell on Windows, you can see the executable
+  by entering the ls command in your shell. On Linux and macOS,
+  you'll see two files. With PowerShell on Windows, you'll see
+  the same three files that you would see using CMD.
+
+  ls
+  main  main.rs
+
+  With CMD on Windows, you would enter the following:
+
+  die /B %= the /B option says to only show the file names
+  main.exe
+  main.pdb
+  main.rs
+
+  This shows the source code file with the .rs extension, the executable
+  file (main.exe on Windows, but main on all other platforms), and, when
+  using Windows, a file containing debugging information with
+  the .pdb extension. From here, you run the main or main.exe file,
+  like this:
+
+  ./main # or .\main.exe on Windows
+
+  If main.rs was your "Hello, world!" program, this line would print
+  Hello, world! to your terminal.
+
+  If you're more familiar with a dynamic language, such as Ruby, Python, or
+  Javascript, you might not be used to compiling and running a
+  program as separate steps. Rust is an ahead-of-time compiled language,
+  meaning you can compile a program and give the executable to someone
+  else, and they can run it even without having Rust installed. If you 
+  give someone a .rb, .py, .js file, they need to have a Ruby,
+  Python, or JavaScript implementation installed (respectively). But
+  in those languages, you only need one command to compile and 
+  run your program. Everything is a trade-off in language design.
+
+  Just compiling with rustc is fine for simple programs, but as your
+  project grows, you'll want to manage all the options and make it easy 
+  to share your code. Next, we'll introduce you to the Cargo tool, which
+  will help you write real-world Rust programs.
+
