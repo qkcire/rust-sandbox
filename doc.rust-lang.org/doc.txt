@@ -1,0 +1,48 @@
+The Rust Programming Language
+
+1.2 HELLO, WORLD!
+ Now that you've installed Rust, let's write your
+ first Rust program. It's traditional when learning
+ a new language to write a little program that prints
+ the text Hello, World! to the screen, so we'll do the
+ same here!
+
+ NOTE:
+  This book assume basica familliarity with the command
+  line. Rust makes no specific demands about your editing
+  or toolong or where your code lives, so if you prefer
+  to use an integrated development environment(IDE) instead
+  of the command line, feel free to use your favorite IDE.
+  Many IDEs now have some degree of Rust support; check the
+  IDE's documentention for details. Recentl, the Rust
+  team has been focusing on enabling great IDE support, and
+  progress has been made raipidly on that front!
+
+ CREATING A PROJECT DIRECTORY
+  You'll start by making a directory to store your Rust code.
+  It doesn't matter to Rust where your code lives, but for
+  the exercises and projects in this book, we suggest making a
+  projects directory in your home directory and keeping all
+  your projects there.
+
+  Open a terminal and enter the following commands to make
+  a projects directory and a directory for the "Hello, world!"
+  project within the projects directory.
+
+  For Linux, macOS, and PowerShell on Windows, enter this:
+
+  mkdir ~/projects
+  cd ~/projects
+  mkdir hello_world
+  cd hello_world
+
+  WRITING AND RUNNING A RUST PROGRAM
+  Next, make a snew source file and call it main.rs. Rust files
+  always end with the .rs extension. If you're using more than
+  one word in your filename, use an underscore to separate them.
+  For example, use hello_world.rs rather than helloworld.rs.
+
+  Now open the main.rs file you just created and enter the code in
+  Listing 1-1.
+
+  Filename: main.rs
