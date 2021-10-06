@@ -188,5 +188,8 @@ impl<T> Foo<T> {
   println!("{:?}", another_foo.frobnicate());
   // Some(1)
 
+  /////////////////////////
+  // 3. Pattern matching //
+  /////////////////////////
   
 }
