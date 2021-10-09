@@ -33,7 +33,7 @@ fn main() {
         Visitor::new("bert", "Hello Bert, enjoy your treehouse."),
         Visitor::new("steve", "Hi Steve. Your milk is in the fridge."),
         Visitor::new("fred", "Wow, who invited fred?"),
-    ]
+    ];
 
     println!("What's your name?");
     let name = what_is_your_name();
@@ -44,18 +44,5 @@ fn main() {
     match known_visitor {
         Some(visitor) => visitor.greet_visitor(),
         None => println!("You are not on the visitor list. Please leave.")
-    }
-
-    let mut allow_them_in = false;
-    for visitor in &visitor_list {
-        if visitor == &name {
-            allow_them_in = true;
-        }
-    }
-
-    if allow_them_in {
-        println!("Welcome to the Treehouse, {}", name);
-    } else {
-        println!("Sorry, you aren't on the list");
     }
 }
