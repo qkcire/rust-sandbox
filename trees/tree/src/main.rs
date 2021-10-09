@@ -57,18 +57,3 @@ fn main() {
     }
     println!("{:#?}", &tree);
 }
-
-//   (12 (31 (31, 12 (41,)), 14))
-
-// extern crate binary_tree;
-
-// use binary_tree::count::CountTree;
-
-// fn main() {
-//     let mut ct: CountTree<_> = CountTree::new();
-//     for i in 0..10 {
-//         ct.insert(0, i);
-//         println!("len of ct: {}", ct.len());
-//         println!("{:#?}", ct);
-//     }
-// }
