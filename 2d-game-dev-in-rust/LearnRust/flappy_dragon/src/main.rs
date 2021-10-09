@@ -4,6 +4,12 @@ const SCREEN_WIDTH : i32 = 80;
 const SCREEN_HEIGHT : i32 = 50;
 const FRAME_DURATION : f32 = 75.0;
 
+struct Obstacle {
+    x: i32,
+    gap_y: i32,
+    size: i32,
+}
+
 struct Player {
     x: i32,
     y: i32,
