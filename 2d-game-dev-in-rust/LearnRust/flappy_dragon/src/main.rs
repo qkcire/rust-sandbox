@@ -31,6 +31,13 @@ impl State {
         ctx.print_centered(5, "Welcome to Flappy Dragon");
         ctx.print_centered(8, "(P) Play Game");
         ctx.print_centered(9, "(Q) Quit Game");
+        if let Some(key) = ctx.key {
+            match key {
+                VirtualKeyCode::P => self.restart(),
+                VirtualKeyCode::Q => ctx.quitting = true,
+                _ => {}
+            }
+        }
     }
 }
 
@@ -49,4 +56,5 @@ fn main() -> BError {
         .with_title("Flappy Dragon")
         .build()?;
     main_loop(context, State::new())
+
 }
