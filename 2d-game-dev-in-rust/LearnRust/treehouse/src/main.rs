@@ -11,14 +11,16 @@ enum VisitorAction {
 #[derive(Debug)]
 struct Visitor {
     name: String,
-    greeting: String,
+    action: VisitorAction,
+    age: i8,
 }
 
 impl Visitor {
-    fn new(name: &str, greeting: &str) -> Self {
+    fn new(name: &str, action: VisitorAction, age: i8) -> Self {
         Self {
             name: name.to_lowercase(),
-            greeting: greeting.to_string(),
+            action,
+            age
         }
     }
 
@@ -39,9 +41,11 @@ fn what_is_your_name() -> String {
 
 fn main() {
     let mut visitor_list = vec![
-        Visitor::new("bert", "Hello Bert, enjoy your treehouse."),
-        Visitor::new("steve", "Hi Steve. Your milk is in the fridge."),
-        Visitor::new("fred", "Wow, who invited fred?"),
+        Visitor::new("Bert", VisitorAction::Accept, 45),
+        Visitor::new("Steve", VisitorAction::AcceptWithNote {
+            note: String::from("Lactose-free milk is in the fridge")
+        }, 15),
+        Visitor::new("Fred", VisitorAction::Refuse, 30),
     ];
 
     loop {
