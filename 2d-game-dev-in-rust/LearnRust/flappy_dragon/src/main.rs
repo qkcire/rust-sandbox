@@ -39,14 +39,29 @@ impl State {
             }
         }
     }
+
+    fn dead(&mut self, ctx: &mut BTerm) {
+        ctx.cls();
+        ctx.print_centered(5, "You are dead!");
+        ctx.print_centered(8, "(P) Play Again");
+        ctx.print_centered(9, "(Q) Quit Game");
+
+        if let Some(key) = ctx.key {
+            match key {
+                VirtualKeyCode::P => self.restart(),
+                VirtualKeyCode::Q => ctx.quitting = true,
+                _ => {}
+            }
+        }
+    }
 }
 
 impl GameState for State {
-    fn tick(&self , ctx: &mut BTerm) {
+    fn tick(&mut self , ctx: &mut BTerm) {
         match self.mode {
-            GameMode:: => self.main_menu(ctx),
-            GameMode:: => self.dead(ctx),
-            GameMode:: => self.play(ctx),
+            GameMode::Menu => self.main_menu(ctx),
+            GameMode::End => self.dead(ctx),
+            GameMode::Playing => self.play(ctx),
         }
     }
 }
