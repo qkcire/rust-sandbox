@@ -51,4 +51,12 @@ pub fn new() -> Self {
     pub fn can_enter_tile(&self, point: Piont) -> bool {
       self.in_bounds(point) && self.tiles[map_idx(point.x, point.y)]==TileType::Floor
     }
+
+    pub fn try_idx(&self, point: Point) -> Options<usize> {
+      if !self.in_bounds(point) {
+        None
+      } else {
+        Some(map_idx(point.x, point.y))
+      }
+    }
 }
