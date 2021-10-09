@@ -1,5 +1,11 @@
 use bracket_lib::prelude::*;
 
+struct Player {
+    x: i32,
+    y: i32,
+    velocity: f32,
+}
+
 enum GameMode {
     Menu,
     Playing,
