@@ -1,5 +1,10 @@
 use rand::Rng;
 
+/*
+Binary Tree implementaion courtesy of
+Programming Rust: Fast, Safe Systems Development
+By Jim Blandy, Jason Orendorff
+*/
 #[derive(Debug)]
 enum BinaryTree<T> {
     Empty,
