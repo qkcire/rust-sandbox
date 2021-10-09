@@ -47,4 +47,8 @@ pub fn new() -> Self {
                    && point.y >= 0
                    && point.y < SCREEN_HEIGHT
     }
+
+    pub fn can_enter_tile(&self, point: Piont) -> bool {
+      self.in_bounds(point) && self.tiles[map_idx(point.x, point.y)]==TileType::Floor
+    }
 }
