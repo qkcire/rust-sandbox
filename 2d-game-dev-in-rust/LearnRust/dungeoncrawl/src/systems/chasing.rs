@@ -38,5 +38,25 @@ pub fn chasing(
           *player_pos
         };
       }
+
+      let mut attacked = false;
+      positions
+        .iter(ecs)
+        .filter( |(_, target_pos, _)| **target_pos == destination)
+        .for_each( |(victim, _, _)| {
+          if ecs.entry_ref(*victim).unwrap().get_component::<Player>()
+            .is_ok() {
+              commands
+                .push(((), WantsToAttack{
+                  attacker: *entity,
+                  victim: *victim
+                }));
+            }
+            attacked = true;
+        });
+      if !attacked {
+        commands
+          .push(((), WantsToMove{ entity: *entity, destination }));
+      }
     })
 }
