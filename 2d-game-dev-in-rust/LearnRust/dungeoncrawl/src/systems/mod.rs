@@ -1,5 +1,6 @@
 mod map_render;
 mod player_input;
+mod entity_render;
 
 use crate::prelude::*;
 
