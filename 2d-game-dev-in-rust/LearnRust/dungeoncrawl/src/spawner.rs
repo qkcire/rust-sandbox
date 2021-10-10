@@ -38,7 +38,7 @@ pub fn spawn_monster(
   );
 }
 
-fn gobline() -> (i32, String, FontCharType) {
+fn goblin() -> (i32, String, FontCharType) {
   (1, "Goblin".to_string(), to_cp437('g'))
 }
 
