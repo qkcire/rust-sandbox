@@ -39,3 +39,12 @@ impl Map {
         self.in_bounds(point) && self.tiles[map_idx(point.x, point.y)]==TileType::Floor
     }
 }
+
+impl Algorithm2D for Map {
+    fn dimensions(&self) -> Point {
+        Point::new(SCREEN_WIDTH, SCREEN_HEIGHT)
+    }
+    fn in_bounds(&self, point: Point) -> bool {
+        self.in_bounds(point)
+    }
+}
