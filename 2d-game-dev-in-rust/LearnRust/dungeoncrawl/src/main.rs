@@ -31,7 +31,9 @@ use prelude::*;
 struct State {
     ecs : World,
     resources: Resources,
-    systems: Schedule,
+    input_systems: Schedule,
+    player_systems: Schedule,
+    monster_systems: Schedule,
 }
 
 impl State {
