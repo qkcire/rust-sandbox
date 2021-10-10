@@ -24,4 +24,19 @@ pub fn chasing(
         map,// (3)
         1024.0// (4)
     );
+
+    movers.iter(ecs).for_each( |(entity, pos, _)| {
+      let idx = map_idx(pos.x, pos.y);
+      if let Some(destination) = DijkstraMap::find_lowest_exit(
+        &dijkstra_map, idx, map
+      )
+      {
+        let distance = DistanceAlg::Pythagoras.distance2d(*pos, *player_pos);
+        let destination = if distance > 1.2 {
+          map.index_to_point2d(destination)
+        } else {
+          *player_pos
+        };
+      }
+    })
 }
