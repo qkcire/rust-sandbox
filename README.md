@@ -19,3 +19,5 @@
 |Rust      |28       |222      |204        |1306     |
 |TOML      |12       |24       |12         |66       |
 |Markdown  |1        |3        |0          |4        |
+
+See: https://stackoverflow.com/questions/4822471/count-number-of-lines-in-a-git-repository
