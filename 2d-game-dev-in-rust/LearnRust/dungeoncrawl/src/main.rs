@@ -1,11 +1,11 @@
 #![warn(clippy::pedantic)]
 
-mod map;
-mod map_builder;
-mod camera;
 mod components;
 mod spawner;
+mod map;
+mod map_builder;
 mod systems;
+mod camera;
 
 mod prelude {
     pub use bracket_lib::prelude::*;
@@ -16,18 +16,19 @@ mod prelude {
     pub const SCREEN_HEIGHT: i32 = 50;
     pub const DISPLAY_WIDTH: i32 = SCREEN_WIDTH / 2;
     pub const DISPLAY_HEIGHT: i32 = SCREEN_HEIGHT / 2;
-    pub use crate::map::*;
-    pub use crate::map_builder::*;
-    pub use crate::camera::*;
     pub use crate::components::*;
     pub use crate::spawner::*;
+    pub use crate::map::*;
     pub use crate::systems::*;
+    pub use crate::map_builder::*;
+    pub use crate::camera::*;
 }
 
 use prelude::*;
 
 struct State {
-    ecs: World,
+    ecs : World,
+    resources: Resources,
     systems: Schedule,
 }
 
@@ -38,10 +39,16 @@ impl State {
         let mut rng = RandomNumberGenerator::new();
         let map_builder = MapBuilder::new(&mut rng);
         spawn_player(&mut ecs, map_builder.player_start);
+        map_builder.rooms
+            .iter()
+            .skip(1)
+            .map(|r| r.center())
+            .for_each(|pos| spawn_monster(&mut ecs, &mut rng, pos));
         resources.insert(map_builder.map);
         resources.insert(Camera::new(map_builder.player_start));
         Self {
             ecs,
+            resources,
             systems: build_scheduler()
         }
     }
