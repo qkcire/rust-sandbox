@@ -5,6 +5,7 @@ pub struct MapBuilder {
     pub map : Map,
     pub rooms : Vec<Rect>,
     pub player_start : Point,
+    pub amulet_start : Point,
 }
 
 impl MapBuilder {
@@ -14,11 +15,19 @@ impl MapBuilder {
             map : Map::new(),
             rooms : Vec::new(),
             player_start : Point::zero(),
+            amulet_start : Point::zero(),
         };
         mb.fill(TileType::Wall);
         mb.build_random_rooms(rng);
         mb.build_corridors(rng);
         mb.player_start = mb.rooms[0].center();// (1)
+        let dijkstra_map = DijkstraMap::new(
+            SCREEN_WIDTH,
+            SCREEN_HEIGHT,
+            &vec![mb.map.point2d_to_index(mb.player_start)],
+            &mb.map,
+            1024.0
+        );
         mb
     }
 
