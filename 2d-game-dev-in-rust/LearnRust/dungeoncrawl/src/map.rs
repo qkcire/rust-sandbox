@@ -38,6 +38,18 @@ impl Map {
     pub fn can_enter_tile(&self, point : Point) -> bool {
         self.in_bounds(point) && self.tiles[map_idx(point.x, point.y)]==TileType::Floor
     }
+
+    fn valid_exit(&self, loc: Point, delta: Point) -> Option<usize> {
+        let destination = loc + detla;
+        if self.in_bounds(destination) {
+            let idx = self.point2d_to_index(destination);
+            Some(idx)
+        } else {
+            None
+        }
+    } else {
+        None
+    }
 }
 
 impl Algorithm2D for Map {
