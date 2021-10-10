@@ -20,12 +20,11 @@ pub fn player_input(
             VirtualKeyCode::Down => Point::new(0, 1),
             _ => Point::new(0, 0),
         };
-
-        players.iter(ecs).for_each(| (entity, pos) | {
-            let destination = *pos + delta;
-            commands
-                .push(((), WantsToMove{ entity: *entity, destination }));
-        });
+        let (player_entity, destination) = players
+            .iter(ecs)
+            .find_map( | (entity, pos) | Some((*entity, *pos + delta)) )
+            .unwrap();
+            
         *turn_state = TurnState::PlayerTurn;
     }
 }
