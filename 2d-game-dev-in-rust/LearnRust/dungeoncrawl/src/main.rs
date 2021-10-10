@@ -93,8 +93,10 @@ fn main() -> BError {
         .with_tile_dimensions(32, 32) // (2)
         .with_resource_path("/Users/eq/rust-sandbox/2d-game-dev-in-rust/LearnRust/dungeoncrawl/resources/") // (3)
         .with_font("dungeonfont.png", 32, 32) // (4)
+        .with_font("terminal8x8.png", 8, 8)
         .with_simple_console(DISPLAY_WIDTH, DISPLAY_HEIGHT, "dungeonfont.png") // (5)
         .with_simple_console_no_bg(DISPLAY_WIDTH, DISPLAY_HEIGHT, "dungeonfont.png") // (6)
+        .with_simple_console_no_bg(SCREEN_WIDTH*2, SCREEN_HEIGHT*2, "terminal8x8.png")
         .build()?;
 
     main_loop(context, State::new())
