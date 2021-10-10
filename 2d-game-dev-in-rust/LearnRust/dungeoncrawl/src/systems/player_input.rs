@@ -24,7 +24,25 @@ pub fn player_input(
             .iter(ecs)
             .find_map( | (entity, pos) | Some((*entity, *pos + delta)) )
             .unwrap();
-            
+        
+        let mut enemies = <(Entity, &Point)>::query().filter(component::<Enemy>());
+        if delta.x != 0 || delta.y != 0 {
+            let mut hit_something = false;
+            enemies
+                .iter(ecs)
+                .filter( |(_, pos)| {
+                    **pos == destination
+                })
+                .for_each(|(entity, _) | {
+                    hit_something = true;
+
+                    comands
+                        .push((()), WantsToAttack{
+                            attacker: player_entity,
+                            victim: *entity,
+                        }));
+                });
+        }
         *turn_state = TurnState::PlayerTurn;
     }
 }
