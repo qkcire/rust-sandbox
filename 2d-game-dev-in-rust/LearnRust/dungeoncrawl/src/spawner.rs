@@ -19,19 +19,21 @@ pub fn spawn_monster(
   rng: &mut RandomNumberGenerator,
   pos: Point
 ) {
+  let (hp, name, glyph) = match rng.roll_dice(1, 10) {
+    1..=8 => goblin(),
+    _ => orc()
+  };
+
   ecs.push(
     (Enemy,
-      pos,
-      Render{
-        color: ColorPair::new(WHITE, BLACK),
-        glyph: match rng.range(0,4) {
-          0 => to_cp437('E'),
-          1 => to_cp437('O'),
-          2 => to_cp437('o'),
-          _ => to_cp437('g'),
-        }
-      },
-      MovingRandomly{}
+        pos,
+        Render{
+          color: ColorPair::new(WHITE, BLACK),
+          glyph,
+        },
+        MovingRandomly{},
+        Health{ current: hp, max: hp},
+        Name(name)
     )
   );
 }
