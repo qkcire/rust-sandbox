@@ -21,16 +21,14 @@ pub fn player_input(
         };
 
         if delta.x != 0 || delta.y != 0 {
-            let mut players = <&mut Point>::query()//(1)
-                .filter(component::<Player>());//(2)
-            players.iter_mut(ecs).for_each(|pos| {//(3)
+            let mut players = <&mut Point>::query()
+                .filter(component::<Player>());
+            players.iter(ecs).for_each( |(entity, pos)| {
                 let destination = *pos + delta;
-                if map.can_enter_tile(destination) {
-                    *pos = destination;
-                    camera.on_player_move(destination);
-                    *turn_state = TurnState::PlayerTurn;
-                }
+                commands
+                    .push(((), WantToMove{ entity: *entity, destination }));
             });
+            *turn_state = TurnState::PlayerTurn;
         }
     }
 }
