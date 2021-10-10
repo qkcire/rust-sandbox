@@ -72,7 +72,7 @@ fn main() -> BError {
         .with_fps_cap(30.0)
         .with_dimensions(DISPLAY_WIDTH, DISPLAY_HEIGHT) // (1)
         .with_tile_dimensions(32, 32) // (2)
-        .with_resource_path("resources/") // (3)
+        .with_resource_path("/Users/eq/rust-sandbox/2d-game-dev-in-rust/LearnRust/dungeoncrawl/resources/") // (3)
         .with_font("dungeonfont.png", 32, 32) // (4)
         .with_simple_console(DISPLAY_WIDTH, DISPLAY_HEIGHT, "dungeonfont.png") // (5)
         .with_simple_console_no_bg(DISPLAY_WIDTH, DISPLAY_HEIGHT, "dungeonfont.png") // (6)
