@@ -1,4 +1,5 @@
 mod map;
+mod map_builder;
 mod player;
 
 mode prelude {
@@ -7,6 +8,7 @@ mode prelude {
   pub const SCREEN_HEIGHT: i32 = 50;
   pub use crate::map::*;
   pub use crate::player::*;
+  pub use crate::map_builder::*;
 }
 
 use prelude::*;
