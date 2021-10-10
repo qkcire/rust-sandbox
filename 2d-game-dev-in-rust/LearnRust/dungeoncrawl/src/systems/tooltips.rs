@@ -1,7 +1,7 @@
 use crate::prelude::*;
 
 #[system]
-#[read_component(Points)]
+#[read_component(Point)]
 #[read_component(Name)]
 #[read_component(Health)]
 pub fn tooltips(
