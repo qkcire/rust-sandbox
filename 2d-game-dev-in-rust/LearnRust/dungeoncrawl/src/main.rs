@@ -2,7 +2,7 @@ mod map;
 mod map_builder;
 mod player;
 
-mode prelude {
+mod prelude {
   pub use bracket_lib::prelude::*;
   pub const SCREEN_WIDTH: i32 = 80;
   pub const SCREEN_HEIGHT: i32 = 50;
