@@ -3,6 +3,7 @@
 mod map;
 mod map_builder;
 mod camera;
+mod components;
 
 mod prelude {
     pub use bracket_lib::prelude::*;
@@ -16,6 +17,7 @@ mod prelude {
     pub use crate::map::*;
     pub use crate::map_builder::*;
     pub use crate::camera::*;
+    pub use crate::components::*;
 }
 
 use prelude::*;
