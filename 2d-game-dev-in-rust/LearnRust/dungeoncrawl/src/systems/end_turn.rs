@@ -6,10 +6,8 @@ use crate::prelude::*;
 #[read_component(Player)]
 #[read_component(AmuletOfYala)]
 pub fn end_turn(ecs: &SubWorld, #[resource] turn_state: &mut TurnState) {
-    let mut player_hp = <(&Health, &Point)>::query()
-        .filter(component::<Player>());
-    let mut amulet = <&Point>::query()
-        .filter(component::<AmuletOfYala>());
+    let mut player_hp = <(&Health, &Point)>::query().filter(component::<Player>());
+    let mut amulet = <&Point>::query().filter(component::<AmuletOfYala>());
     let current_state = turn_state.clone();
     let mut new_state = match current_state {
         TurnState::AwaitingInput => return,

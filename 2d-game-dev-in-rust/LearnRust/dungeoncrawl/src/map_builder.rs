@@ -29,15 +29,15 @@ impl MapBuilder {
             &mb.map,
             1024.0
         );
-        const UNREACHABLE : &f32 = &f32::MAX;// (1)
-        mb.amulet_start = mb.map.index_to_point2d// (2)
+        const UNREACHABLE : &f32 = &f32::MAX;
+        mb.amulet_start = mb.map.index_to_point2d// (1)
         ( 
             dijkstra_map.map
                 .iter()
-                .enumerate()// (3)
-                .filter(|(_,dist)| *dist < UNREACHABLE)// (4)
-                .max_by(|a,b| a.1.partial_cmp(b.1).unwrap())// (5)
-                .unwrap().0// (6)
+                .enumerate()// (2)
+                .filter(|(_,dist)| *dist < UNREACHABLE)// (3)
+                .max_by(|a,b| a.1.partial_cmp(b.1).unwrap())// (4)
+                .unwrap().0// (5)
         );
 
         mb
