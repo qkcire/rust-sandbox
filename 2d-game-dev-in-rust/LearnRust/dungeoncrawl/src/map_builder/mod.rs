@@ -8,8 +8,9 @@ const NUM_ROOMS: usize = 20;
 pub struct MapBuilder {
     pub map : Map,
     pub rooms : Vec<Rect>,
+    pub monster_spawns: Vec<Point>,
     pub player_start : Point,
-    pub amulet_start : Point
+    pub amulet_start : Point,
 }
 
 impl MapBuilder {
