@@ -26,7 +26,10 @@ pub fn chasing(
         1024.0// (4)
     );
 
-    movers.iter(ecs).for_each(| (entity, pos, _) | {// (5)
+    movers.iter(ecs).for_each(| (entity, pos, _, fov) | {// (5)
+        if !fov.visible_tiles.contains(&player_pos) {
+            return;
+        }
         let idx = map_idx(pos.x, pos.y);
         if let Some(destination) = DijkstraMap::find_lowest_exit(
             &dijkstra_map, idx, map
