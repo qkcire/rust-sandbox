@@ -5,6 +5,7 @@ use crate::prelude::*;
 #[read_component(Player)]
 pub fn map_render(#[resource] map: &Map, #[resource] camera: &Camera) {// (1)
     let mut fov = <&FieldOfView>::query().filter(component::<Player>());
+    let player_fov = fov.iter(ecs).nth(0).unwrap();
     let mut draw_batch = DrawBatch::new();
     draw_batch.target(0);
     for y in camera.top_y ..= camera.bottom_y {
